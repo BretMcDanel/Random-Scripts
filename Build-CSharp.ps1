@@ -1,27 +1,37 @@
 <#
+    @AUTHOR: Bret McDanel
 	.SYNOPSIS
 	Compiles a CSharp file into either an EXE or DLL
 	.DESCRIPTION
 	Compiles a CSharp file into either an EXE or DLL
-	.PARAMETER Debug
+	.PARAMETER EnableDebug
 	Includes debug information in the output file
 	.PARAMETER isLibrary
 	Sets mode to generate DLL, unset an EXE will be produced
 	.PARAMETER Script
 	Path to the .cs file
-
-	.EXAMPLES
+	.EXAMPLE
 	# Creates HelloWorld.exe from HelloWorld.cs
 	Compile-CSharp -Script HelloWorld.cs
 
+	.EXAMPLE
 	# Creates HelloWorld.dll from HelloWorld.cs, enables debugging info in the DLL
 	Compile-CSharp -Script HelloWorld.dll -isLibrary -Debug
 #>
-function Compile-CSharp
-{
+function Build-CSharp {
+	[cmdletbinding()]
 	param (
-		[Switch] $Debug,
+		[Switch] $EnableDebug,
 		[Switch] $isLibrary,
+		[ValidateScript({
+				if (Test-Path -Path $_ -PathType Leaf) {
+					$True
+				}
+				else {
+					Throw "Unable to access $_"
+					$False
+				}
+			})]
 		[String] $Script
 	)
 
@@ -33,24 +43,25 @@ function Compile-CSharp
 
 	$ScriptContents = Get-Content $Script -Raw
 
-	if($isLibrary) {
-		$OutputFile = $((Get-Item $Script).Basename + '.dll')
-	} else {
-		$OutputFile = $((Get-Item $Script).Basename + '.exe')
+	if ($isLibrary) {
+		$cp = @{
+			"OutputAssembly"     = $((Get-Item $Script).Basename + '.dll')
+			"GenerateExecutable" = $false
+		}
+	}
+	else {
+		$cp = @{
+			"OutputAssembly"     = $((Get-Item $Script).Basename + '.exe')
+			"GenerateExecutable" = $true
+		}
 	}
 
-	$cp = @{
-		"OutputAssembly" = $OutputFile
-		"GenerateExecutable" = $(-not $isLibrary)
-	}
-
-	if ($Debug) {
+	if ($EnableDebug) {
 		Write-Host "Debugging is enabled"
 		$cp['TreatWarningsAsErrors'] = $true
 		$cp['IncludeDebugInformation'] = $true
 	}
 
-	Write-Host "Saving output to $OutputFile"
 	Add-Type -TypeDefinition $ScriptContents -CompilerParameters $cp
 
 }

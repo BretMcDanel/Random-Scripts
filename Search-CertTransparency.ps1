@@ -1,4 +1,5 @@
 <#
+	@Author: Bret McDanel
 	.SYNOPSIS
 	Fetches data from the SSL Certificate Transparency list for specified domains
 	.DESCRIPTION
@@ -16,12 +17,13 @@
 	.PARAMETER domain
 	Array of domain to search
 
-	.EXAMPLES
+	.EXAMPLE
 	# Gets all certs issued after January 1, 2022 including wildcards and subdomains
 	Search-CertTransparency.ps1 -domain deltadentalins.com -wildcard -subdomain -after 1/1/2022
 
+	.EXAMPLE
 	# Gets all certs issued less than 10 days ago for domains foo.com and bar.com
-	Search-CertTransparency.ps1 -domain $("foo.com", "bar.com) -days 10
+	Search-CertTransparency.ps1 -domain $("foo.com", "bar.com") -days 10
 #>
 
 
@@ -81,7 +83,7 @@ foreach ($dom in $domain) {
 	$certs = $()
 	$id=$null
 	do {
-		if ($id -ne $null) {
+		if ($null -ne $id) {
 			$req = $Request + "&after=" + $id
 			# Avoid rate limiter
 			Start-Sleep -Seconds 1.5
@@ -106,7 +108,7 @@ foreach ($dom in $domain) {
 	} while ($Response.length -gt 0)
 
 	# Filter by date
-	if ($AfterDate -ne $null) { 
+	if ($null -ne $AfterDate) { 
 		$Response = $Response | Where-Object {(Get-Date -Date $_.not_before) -gt $AfterDate}
 	}
 
@@ -116,7 +118,7 @@ foreach ($dom in $domain) {
 		$Certs | Select-Object *,@{n='Info URL';e={  "https://search.censys.io/certificates/" + ($_.cert -replace '(.*sha256=)(.*?);.*','$2') }}
 
 	} else {
-		$Certs | select id, 
+		$Certs | Select-Object id, 
 			@{n='dns_names';e={ $_.dns_names -join " " }},
 			@{n='issuer'; e={ $_.issuer -replace '(.*O=")(.*?)".*','$2' }},
 			not_before, not_after, revoked,
