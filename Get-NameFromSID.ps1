@@ -27,15 +27,15 @@ function Get-NameFromSID {
             HelpMessage = "Enter a SID string."
         )]
         [ValidateScript({
-                If ($_ -match 'S-1-[1235]-\d{1,2}(-\d+)*') {
-                    $True
+                if ($_ -match 'S-1-[1235]-\d{1,2}(-\d+)*') {
+                    $true
                 }
                 else {
                     Throw "The parameter value does not match the pattern for a valid SID."
-                    $False
+                    $false
                 }
             })]
-        [String]$SID
+        [string]$SID
     )
     Begin {
         Write-Verbose "[$((Get-Date).TimeofDay) BEGIN  ] Starting $($myinvocation.mycommand)"
