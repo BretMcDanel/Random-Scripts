@@ -1,6 +1,6 @@
 # DynamicHelper
 ## Introduction
-This module has some tools that point you towards a newly installed app.  Each function should have help which can be accessed by invoking ```Get-Help <modulename>```
+This module has some tools that point you towards a newly installed app.  This wont catch sneaky apps so you still may want to run ProcMon or similar, but it lets you know fairly quickly where to point your analysis tools at. Each function should have help which can be accessed by invoking ```Get-Help <modulename>```
 
 ## License
 This is released under a 3-clause BSD license (New BSD License)
