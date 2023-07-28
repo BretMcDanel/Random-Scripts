@@ -14,6 +14,7 @@ These are random things that I felt like sharing.  Mostly they are things I wrot
 * [Get-UnquotedService.ps1](Get-UnquotedService.ps1) - Lists all unquoted services that may be vulnerable to an unquoted search path CWE-428 attack
 * [Invoke-IdleOff.ps1](Invoke-IdleOff.ps1) - Execute payload when the user goes idle so they are less likely to see any unusual activity.  Time bounds to limit during office hours so the system is not doing things at weird times.
 * [Mouse.ps1](Mouse.ps1) - Randomly moves the mouse cursor, for maximum fun run remotely on your boss' system
+* [netns](netns) - Scripts to launch OpenVPN, create a network namespace, and execute commands in the network namespace
 * [Search-CertTransparency.ps1](Search-CertTransparency.ps1) - Search the Certificate Transparency Logs for a given domain, useful for footprinting or periodic checks on your own domain to see if anyone is abusing dangling DNS records.
 
 
