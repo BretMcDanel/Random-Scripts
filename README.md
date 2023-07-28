@@ -6,6 +6,7 @@ These are random things that I felt like sharing.  Mostly they are things I wrot
 ## Powershell
 * [Add-SpoolMonitor.ps1](Add-SpoolMonitor.ps1) - PoC based on Brady Bloxham's persistence technique presented at [Defcon 22](https://www.youtube.com/watch?v=dq2Hv7J9fvk).
 * [Build-CSharp.ps1](Build-CSharp.ps1) - Rudimentary C# compiler.  Mostly useful for pentesting apps, real dev should be done with a real compiler
+* [DynamicHelper](DynamicHelper) - Module with utilties to help with dynamic analysis (DAST) and static analysis (SAST) of executables
 * [Get-FileMetaData.ps1](Get-FileMetaData.ps1) - Gets file data including company name, product name, and crypto signature information.
 * [Get-NameFromSID.ps1](Get-NameFromSID.ps1) - Resolves a SID into a username
 * [Get-SystemChanges.ps1](Get-SystemChanges.ps1) - Lists changes made in a specified time interval.  Useful for software analysis to find where to look after installation.
