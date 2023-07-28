@@ -9,6 +9,7 @@ These are random things that I felt like sharing.  Mostly they are things I wrot
 * [Get-FileMetaData.ps1](Get-FileMetaData.ps1) - Gets file data including company name, product name, and crypto signature information.
 * [Get-NameFromSID.ps1](Get-NameFromSID.ps1) - Resolves a SID into a username
 * [Get-SystemChanges.ps1](Get-SystemChanges.ps1) - Lists changes made in a specified time interval.  Useful for software analysis to find where to look after installation.
+* [Get-WritePerms.ps1](Get-WritePerms.ps1) - Gets the write permissions of a service or file/directory and all the parent directories
 * [Invoke-IdleOff.ps1](Invoke-IdleOff.ps1) - Execute payload when the user goes idle so they are less likely to see any unusual activity.  Time bounds to limit during office hours so the system is not doing things at weird times.
 * [Mouse.ps1](Mouse.ps1) - Randomly moves the mouse cursor, for maximum fun run remotely on your boss' system
 * [Search-CertTransparency.ps1](Search-CertTransparency.ps1) - Search the Certificate Transparency Logs for a given domain, useful for footprinting or periodic checks on your own domain to see if anyone is abusing dangling DNS records.
