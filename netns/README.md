@@ -5,6 +5,7 @@ Network namespaces provide isolation of network resources (interfaces, routing t
 
 These scripts arent necessary, they just make it more convenient.  Most everything can be trivially done with ```ip netns``` commands.
 
+
 ![It's a surprise tool that will help us later](SupriseTool.png)
 
 See ```man network_namespaces``` and ```man ip-netns``` for more information.
