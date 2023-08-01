@@ -2,6 +2,9 @@
 ## Introduction
 These are random things that I felt like sharing.  Mostly they are things I wrote to help me with small repetitive tasks.
 
+## Javascript
+* [JS-replace-copypasta.html](JS-replace-copypasta.html) - Javascript hijacks the copy command and rewrites the text with something malicious if pasted into a terminal window
+
 ## Powershell
 * [Add-SpoolMonitor.ps1](Add-SpoolMonitor.ps1) - PoC based on Brady Bloxham's persistence technique presented at [Defcon 22](https://www.youtube.com/watch?v=dq2Hv7J9fvk).
 * [Build-CSharp.ps1](Build-CSharp.ps1) - Rudimentary C# compiler.  Mostly useful for pentesting apps, real dev should be done with a real compiler

